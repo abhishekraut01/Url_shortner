@@ -20,3 +20,5 @@ const urlSchema = new mongoose.Schema({
 )
 
 const URL = mongoose.model('Url',urlSchema)
+
+module.exports = URL;
