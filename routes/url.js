@@ -2,12 +2,12 @@ const express = require('express');
 const {handleGenerateNewShortURL,handleRedirectToWebsite , handleAnalytics} = require('../controllers/url')
 const router = express.Router();
 
-router.post('/url',handleGenerateNewShortURL)
+router.post('/',handleGenerateNewShortURL)
 
 
 router.get('/analytics/:shortId',handleAnalytics)
 
-router.get('/user/:shortId',handleRedirectToWebsite);
+router.get('/url/:shortId',handleRedirectToWebsite);
 
 
 

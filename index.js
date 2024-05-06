@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const { connection } = require('./connect')
+const cookieParser = require('cookie-parser')
+const {restrictToLoggedinUserOnly} = require('./middlewares/auth')
 
 const app = express();
 const PORT = 8001;
@@ -19,9 +21,10 @@ app.set('views', path.resolve('./view'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'stylesheets')));
+app.use(cookieParser())
 
 
-app.use('/', urlRoute);
+app.use('/url',restrictToLoggedinUserOnly, urlRoute);
 app.use('/', urlRoute);
 app.use('/', urlRoute);
 app.use('/', staticRouter);
