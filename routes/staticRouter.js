@@ -17,4 +17,12 @@ router.get('/login',(req,res)=>{
     return res.render('login');
 })
 
+
+router.get('/analytics',async (req,res)=>{
+    const allUrls = await URL.find({})
+    return res.render('analytics',{
+        urls : allUrls
+    })
+});
+
 module.exports = router;

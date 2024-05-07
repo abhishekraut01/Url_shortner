@@ -92,7 +92,7 @@ input[type="submit"] {
   outline: none;
   transition: 0.5s;
   border: none;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 input[type="submit"]:hover {
   border-color: #2691d9;

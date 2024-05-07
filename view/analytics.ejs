@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="/analytics.css">
+</head>
+<body>
+    <% if (locals.urls) { %>
+        <div class="container">
+            <h2>The Total Analytics For Your Link</h2>
+            <ul class="responsive-table">
+              <li class="table-header">
+                <div class="col col-1">Sr.no</div>
+                <div class="col col-2">ShortID</div>
+                <div class="col col-3">Redirect </div>
+                <div class="col col-4">Clicks</div>
+              </li>
+              <% urls.forEach((url , index) => { %>
+                <li class="table-row">
+                    <div class="col col-1" data-label="Sr.no"><%= index +1 %> </div>
+                    <div class="col col-2" data-label="ShortID"><%= url.shortId %></div>
+                    <div class="col col-3" data-label="Redirect"> <%= url.redirectURL %></div>
+                    <div class="col col-4" data-label="Clicks"><%= url.visitHistory.length %></div>
+                  </li>
+              <% }) %>
+            </ul>
+          </div>
+    <% } %>
+</body>
+</html>
