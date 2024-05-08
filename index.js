@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { connection } = require('./connect')
 const cookieParser = require('cookie-parser')
-const {restrictToLoggedinUserOnly} = require('./middlewares/auth')
+const {restrictToLoggedinUserOnly ,checkAuth} = require('./middlewares/auth')
 
 const app = express();
 const PORT = 8001;
@@ -27,7 +27,7 @@ app.use(cookieParser())
 app.use('/url',restrictToLoggedinUserOnly, urlRoute);
 app.use('/', urlRoute);
 app.use('/', urlRoute);
-app.use('/', staticRouter);
+app.use('/',checkAuth, staticRouter);
 app.use('/user', userRoute);
 app.listen(PORT, () => {
     console.log(`server is started at PORT ${PORT}`)
